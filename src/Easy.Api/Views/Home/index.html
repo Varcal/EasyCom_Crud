@@ -1,0 +1,42 @@
+﻿<section class="col-md-12 paginaPrincipal" ng-cloak>
+    <div class="container" id="conteudo">
+        <div class="btn-novo">
+            <a class="btn btn-primary" href="#/novo"><i class="fa fa-plus"></i> Novo </a>
+        </div>
+
+        <table class="table table-hover table-responsive table-striped" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs">
+            <thead>
+            <tr>
+                <th class="col-md-1"></th>
+                <th class="col-md-6">Nome</th>
+                <th class="col-md-2 text-center">Ativo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="programador in vm.programadores">
+                <td class="col-md-1">
+                    <a ng-href="#/editar/{{programador.id}}"><i class="fa fa-edit"></i></a>
+                    <a ng-click="vm.openModal(programador.id)"><i class="fa fa-remove"></i></a>
+                </td>
+                <td class="col-md-6">{{programador.nome}}</td>
+                <td class="col-md-2 text-center">{{programador.ativo}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<!-- MODAL -->
+<script type="text/ng-template" id="ProgramadorModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">ATENÇÃO</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <h4>
+            Tem certeza que deseja excluir o programador?
+        </h4>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()">Confirmar</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancelar</button>
+    </div>
+</script>

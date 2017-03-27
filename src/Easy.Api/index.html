@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Easy Com Tech - Teste</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="Content/bootswatch/cerulean/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="Content/DataTables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/DataTables/css/angular-datatables.min.css" rel="stylesheet" />
+    <link href="Content/toastr.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Header -->
+    <div ng-include="'Views/Shared/header.html'"></div>
+    <!-- Header -->
+    <!-- Content -->
+    <div id="wrap">
+        <div id="main" ng-view></div>
+    </div>
+    <!-- Content -->
+    <!-- Footer -->
+    <div ng-include="'Views/Shared/footer.html'"></div>
+    <!-- Footer -->
+    <!-- Scripts Externos -->
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/toastr.min.js"></script>
+    <script src="Scripts/datatables/jquery.dataTables.min.js"></script>
+    <script src="Scripts/datatables/datatables-default.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/datatables/angular-datatables.min.js"></script>
+    <script src="Scripts/datatables/angular-datatables.bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="Scripts/site.js"></script>
+    <!-- Scripts Externos -->
+    <!-- Configurações -->
+    <script src="Scripts/app/angular-module.js"></script>
+    <script src="Scripts/app/config.js"></script>
+    <script src="Scripts/app/routes.js"></script>
+    <!-- Configurações -->
+    <!-- Diretivas -->
+    <script src="Scripts/app/directives/loading-directives.js"></script>
+    <!-- Diretivas -->
+    <!-- Serviços -->
+    <script src="Scripts/app/services/programador-service.js"></script>
+    <script src="Scripts/app/services/especialidadeTipo-service.js"></script>
+    <script src="Scripts/app/services/disponibilidade-service.js"></script>
+    <script src="Scripts/app/services/horarioTrabalho-service.js"></script>
+    <!-- Serviços -->
+    <!-- Controllers -->
+    <script src="Scripts/app/controllers/home-list-controller.js"></script>
+    <script src="Scripts/app/controllers/home-create-controller.js"></script>
+    <script src="Scripts/app/controllers/home-edit-controller.js"></script>
+    <script src="Scripts/app/controllers/home-modal-controller.js"></script>
+    <!-- Controllers -->
+</body>
+</html>

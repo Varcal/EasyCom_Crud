@@ -1,0 +1,282 @@
+﻿<section class="col-md-offset-3 col-md-6" ng-cloak>
+    <div class="col-md-12 container formularios">
+        <h3>Programador - Cadastrar</h3>
+        <!-- Dados Pessoais -->
+        <form id="formProgramador" name="formProgramador" novalidate>
+            <div id="dadosPessoais" name="dadosPessoais" ng-show="vm.habilitaForm1">
+                <div class="col-md-12">
+                    <div class="form-group" ng-class="{'has-error' : (formProgramador.email.$invalid) && formProgramador.email.$dirty || (vm.errorForm1 && formProgramador.email.$invalid)}">
+                        <label class="control-label text-primary">E-mail *</label>
+                        <input class="form-control"
+                               type="text"
+                               name="email"
+                               ng-model="vm.programador.dadosCadastro.email"
+                               ng-pattern="vm.emailPattern"
+                               required />
+                        <div class="col-md-12" ng-show="(formProgramador.email.$invalid) && formProgramador.email.$dirty || (vm.errorForm1 && formProgramador.email.$invalid)">
+                            <p class="text-danger" ng-show=" formProgramador.email.$error.required">
+                                * Campo obrigatório
+                            </p>
+                            <p class="text-danger" ng-show="formProgramador.email.$error.pattern">
+                                * E-mail inválido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error' : (formProgramador.nome.$invalid && formProgramador.nome.$dirty) || (vm.errorForm1 && formProgramador.nome.$invalid)}">
+                        <label class="control-label text-primary">Nome *</label>
+                        <input class="form-control"
+                               type="text"
+                               name="nome"
+                               ng-model="vm.programador.nome"
+                               required />
+                        <div class="col-md-12" ng-show="(formProgramador.nome.$invalid && formProgramador.nome.$dirty) || (vm.errorForm1 && formProgramador.nome.$invalid)">
+                            <p class="text-danger">* Campo obrigatório</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error' : (formProgramador.skype.$invalid && formProgramador.skype.$dirty) || (vm.errorForm1 && formProgramador.skype.$invalid)}">
+                        <label class="control-label text-primary">Skype *</label>
+                        <input class="form-control"
+                               type="text"
+                               name="skype"
+                               ng-model="vm.programador.dadosCadastro.skype"
+                               required />
+                        <div class="col-md-12" ng-show="(formProgramador.skype.$invalid && formProgramador.skype.$dirty) || (vm.errorForm1 && formProgramador.skype.$invalid)">
+                            <p class="text-danger">* Campo obrigatório</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error' : (formProgramador.telefone.$invalid && formProgramador.telefone.$dirty) || (vm.errorForm1 && formProgramador.telefone.$invalid)}">
+                        <label class="control-label text-primary">Telefone (Whatsapp) *</label>
+                        <input class="form-control"
+                               type="text"
+                               name="telefone"
+                               ng-model="vm.programador.dadosCadastro.telefone"
+                               required="" />
+                        <div class="col-md-12" ng-show="(formProgramador.telefone.$invalid && formProgramador.telefone.$dirty) || (vm.errorForm1 && formProgramador.telefone.$invalid)">
+                            <p class="text-danger">* Campo obrigatório</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label text-primary">Linkedin</label>
+                        <input class="form-control"
+                               type="text"
+                               name="linkedin"
+                               ng-model="vm.programador.dadosCadastro.linkedin" />
+                    </div>
+                    <div class="form-group" ng-class="{'has-error' : (formProgramador.cidade.$invalid && formProgramador.cidade.$dirty) || (vm.errorForm1 && formProgramador.cidade.$invalid)}">
+                        <label class="control-label text-primary">Cidade *</label>
+                        <input class="form-control"
+                               type="text"
+                               name="cidade"
+                               ng-model="vm.programador.cidade"
+                               required="" />
+                        <div class="col-md-12" ng-show="(formProgramador.cidade.$invalid && formProgramador.cidade.$dirty) || (vm.errorForm1 && formProgramador.cidade.$invalid)">
+                            <p class="text-danger">* Campo obrigatório</p>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error' : (formProgramador.estado.$invalid && formProgramador.estado.$dirty) || (vm.errorForm1 && formProgramador.estado.$invalid)}">
+                        <label class="control-label text-primary">Estado *</label>
+                        <input class="form-control"
+                               type="text"
+                               name="estado"
+                               ng-model="vm.programador.estado"
+                               required="" />
+                        <div class="col-md-12" ng-show="(formProgramador.estado.$invalid && formProgramador.estado.$dirty) || (vm.errorForm1 && formProgramador.estado.$invalid)">
+                            <p class="text-danger">* Campo obrigatório</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label text-primary">Portifólio </label>
+                        <input class="form-control"
+                               type="text"
+                               name="portifolio"
+                               ng-model="vm.programador.portifolio"
+                               />
+                    </div>
+                </div>
+                <div class="col-md-12" ng-class="{'alert alert-danger' : vm.errorForm1 && vm.selectionDisponibilidade.length <= 0}">
+                    <h4 class="text-primary" >
+                        Qual é sua disponibilidade para trabalhar hoje? *
+                    </h4>
+
+                    <div class="form-group" ng-repeat="disponibilidade in vm.disponibilidades">
+                        <div class="col-md-12">
+                            <div class="checkbox col-md-12">
+                                <input type="checkbox" ng-model="disponibilidade.selected" class="" id="{{'div' + disponibilidade.id}}" name="selectedDisponibilidade[]" />
+                                <label for="div{{$index}}">{{disponibilidade.descricao}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" ng-show="vm.errorForm1 && vm.selectionDisponibilidade.length <= 0">
+                        <p class="text-danger">* Campo obrigatório</p>
+                    </div>
+                </div>
+                <div class="col-md-12" ng-class="{'alert alert-danger' : vm.errorForm1 && vm.selectionHorario.length <= 0}">
+                    <h4 class="text-primary" >
+                        Pra você qual é o melhor horário para trabalhar? *
+                    </h4>
+                    <div class="form-group" ng-repeat="horario in vm.horarios">
+                        <div class="col-md-12">
+                            <div class="checkbox col-md-12">
+                                <input type="checkbox" ng-model="horario.selected" class="" id="{{'div' + horario.Id}}" name="selectedHorario[]" />
+                                <label for="div{{$index}}">{{horario.descricao}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" ng-show="vm.errorForm1 && vm.selectionHorario.length <= 0">
+                        <p class="text-danger">* Campo obrigatório</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group" ng-class="{'has-error' : (formProgramador.pretensaoSalarial.$invalid && formProgramador.pretensaoSalarial.$dirty) || (vm.errorForm1 && formProgramador.pretensaoSalarial.$invalid)}">
+                        <label class="control-label text-primary col-md-12">Qual sua pretensão salarial (Valor por hora) * </label>
+                        <div class="col-md-4">
+                            <input class="form-control text-center"
+                                   type="number"
+                                   min="1"
+                                   name="pretensaoSalarial"
+                                   ng-model="vm.programador.pretensaoSalarial"
+                                   required />
+                        </div>                       
+                        <div class="col-md-12" ng-show="(formProgramador.pretensaoSalarial.$invalid && formProgramador.pretensaoSalarial.$dirty) || (vm.errorForm1 && formProgramador.pretensaoSalarial.$invalid)">
+                            <p class="text-danger">* Campo obrigatório</p>
+                        </div>
+                    </div>                   
+                </div>
+                <div class="col-md-12">
+                    <br/>
+                    <div class="form-group">
+                        <a ng-href="#/" class="btn btn-primary"> Cancelar</a>
+                        <button type="button" class="btn btn-primary"
+                                ng-click="vm.habilitarForm2()">
+                            Próximo
+                        </button>
+                        <label class="col-md-offset-8">1 de 3</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Dados Pessoais -->
+            <!-- Dados Bancarios -->
+            <div id="dadosBancarios" name="dadosBancarios" ng-show="vm.habilitaForm2">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="control-label text-primary">Nome</label>
+                        <input class="form-control"
+                               type="text"
+                               name="nomeProgramador"
+                               ng-model="vm.programador.dadosBancarios.nome" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label text-primary">CPF</label>
+                        <input class="form-control"
+                               type="text"
+                               name="cpf"
+                               ng-model="vm.programador.dadosBancarios.cpf" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label text-primary">Banco</label>
+                        <input class="form-control"
+                               type="text"
+                               name="banco"
+                               ng-model="vm.programador.dadosBancarios.banco" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label text-primary">Agência</label>
+                        <input class="form-control"
+                               type="text"
+                               name="banco"
+                               ng-model="vm.programador.dadosBancarios.agencia" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label text-primary" for="tipoConta">Tipo da Conta *</label>
+                        <select class="form-control"
+                                id="tipoConta"
+                                name="tipoConta"
+                                ng-model="vm.programador.dadosBancarios.contaTipo"
+                                ng-options="tc.id as tc.descricao for tc in vm.contaTipoList"
+                                required="">
+                            <option value="">Selecione...</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label text-primary">Número da Conta</label>
+                        <input class="form-control"
+                               type="text"
+                               name="banco"
+                               ng-model="vm.programador.dadosBancarios.numeroConta" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" ng-click="vm.habilitarForm1()"> Anterior</button>
+                        <button type="button" class="btn btn-primary" ng-click="vm.habilitarForm3()"> Próximo</button>
+                        <label class="col-md-offset-7">2 de 3</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Dados Bancarios -->
+            <!-- Especialidade -->
+            <div id="especialidades" name="especialidades" ng-show="vm.habilitaForm3">
+                <div class="col-md-12" >
+                    <div class="form-group radioGroupBelow" ng-repeat="especialidade in vm.especialidades" ng-class="{'alert alert-danger' : vm.errorForm3 && especialidade.obrigatoria && especialidade.nota < 0}">
+                        <h4 class="control-label text-primary">{{especialidade.nome}} <span ng-show="especialidade.obrigatoria"> *</span></h4>
+                        <label>
+                            0<input type="radio" ng-model="especialidade.nota" ng-value="0" ng-class="{'ng-valid-parse' : especialidade.nota === 0 }" />
+                        </label>
+                        <label>
+                            1<input type="radio" ng-model="especialidade.nota" ng-value="1" ng-class="{'ng-valid-parse' : especialidade.nota === 1 }" />
+                        </label>
+                        <label>
+                            2<input type="radio" ng-model="especialidade.nota" ng-value="2" ng-class="{'ng-valid-parse' : especialidade.nota === 2 }" />
+                        </label>
+                        <label>
+                            3<input type="radio" ng-model="especialidade.nota" ng-value="3" ng-class="{'ng-valid-parse' : especialidade.nota === 3 }" />
+                        </label>
+                        <label>
+                            4<input type="radio" ng-model="especialidade.nota" ng-value="4" ng-class="{'ng-valid-parse' : especialidade.nota === 4 }" />
+                        </label>
+                        <label>
+                            5<input type="radio" ng-model="especialidade.nota" ng-value="5" ng-class="{'ng-valid-parse' : especialidade.nota === 5 }" />
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label text-primary">Conhece mais alguma linguagem ou framework que não foi listado aqui em cima? Conte para nos e se auto avalie ainda de 0 a 5.</label>
+                        <input class="form-control"
+                               type="text"
+                               name="banco"
+                               ng-model="vm.programador.outros" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label text-primary">Link Crud (Github)</label>
+                        <input class="form-control"
+                               type="text"
+                               name="linkCrud"
+                               ng-model="vm.programador.linkCrud" />
+                    </div>
+
+                    <div class="form-group" ng-hide="vm.loading">
+                        <button type="button" class="btn btn-primary" ng-click="vm.habilitarForm2()"> Anterior</button>
+                        <button class="btn btn-primary" ng-click="vm.salvar()"> Salvar</button>
+                        <label class="col-md-offset-7">3 de 3</label>
+                    </div>
+                    <div class="col-md-12 text-center" ng-show="vm.loading">
+                        <loading ng-model="vm.loading"></loading>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Especialidade -->
+        </form>
+        <div class="alert alert-danger col-md-12" ng-show="vm.notificacoes.length > 0">
+            <ul>
+                <li class="text-left" ng-repeat="notificacao in vm.notificacoes">{{notificacao.value}}</li>
+            </ul>
+        </div>
+    </div>
+</section>
